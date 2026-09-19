@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brandly AI — Content Studio</title>
+  <meta name="description" content="Brandly AI — Create better brand content faster with AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <div class="brand-name">BRANDLY</div>
+          <div class="brand-sub">AI CONTENT STUDIO</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-tab="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-tab="captions"><span>✦</span> AI Captions</button>
+        <button class="nav-item" data-tab="social"><span>◈</span> Social Posts</button>
+        <button class="nav-item" data-tab="ads"><span>▣</span> Ad Copy</button>
+        <button class="nav-item" data-tab="ideas"><span>✧</span> Content Ideas</button>
+        <button class="nav-item" data-tab="templates"><span>▤</span> Brand Templates</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="usage-card">
+          <div class="usage-head"><span>Free plan</span><b>68%</b></div>
+          <div class="progress"><div></div></div>
+          <p>34 of 50 generations used</p>
+          <button class="upgrade-btn">Explore Premium →</button>
+        </div>
+        <div class="profile">
+          <div class="avatar">A</div>
+          <div><b>Ayesha</b><small>Brand workspace</small></div>
+          <span class="dots">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">B</span><b>BRANDLY</b></div>
+        <div class="search"><span>⌕</span><input id="globalSearch" placeholder="Search your workspace..." /></div>
+        <div class="top-actions">
+          <button class="icon-btn" title="Notifications">♢</button>
+          <button class="help-btn">?</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="tab active-tab">
+        <div class="hero">
+          <div>
+            <span class="eyebrow">AI CONTENT STUDIO</span>
+            <h1>Create better brand content<br><em>faster with AI.</em></h1>
+            <p>Turn a blank content calendar into ready-to-use brand content in minutes.</p>
+            <button class="primary" onclick="showTab('captions')">Start creating <span>→</span></button>
+          </div>
+          <div class="hero-orb">
+            <div class="orb-ring ring1"></div><div class="orb-ring ring2"></div>
+            <div class="orb-core">✦</div>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <div><h2>What do you want to create?</h2><p>Choose a content task and let Brandly do the heavy lifting.</p></div>
+        </div>
+
+        <div class="tool-grid">
+          <button class="tool-card" onclick="showTab('captions')"><div class="tool-icon">✦</div><h3>AI Captions</h3><p>Scroll-stopping captions for Instagram, Facebook and more.</p><span>Generate →</span></button>
+          <button class="tool-card" onclick="showTab('social')"><div class="tool-icon">◈</div><h3>Social Media Posts</h3><p>Complete post copy with hooks, body text and CTAs.</p><span>Generate →</span></button>
+          <button class="tool-card" onclick="showTab('ads')"><div class="tool-icon">▣</div><h3>Ad Copy</h3><p>Clear promotional copy designed around your offer.</p><span>Generate →</span></button>
+          <button class="tool-card" onclick="showTab('ideas')"><div class="tool-icon">✧</div><h3>Content Ideas</h3><p>Fresh ideas to keep your content calendar moving.</p><span>Generate →</span></button>
+        </div>
+
+        <div class="lower-grid">
+          <div class="panel">
+            <div class="panel-head"><div><h3>Brand voice</h3><p>Your saved style keeps every output consistent.</p></div><span class="status-dot">● Active</span></div>
+            <div class="voice-row"><span>Friendly</span><span>Professional</span><span>Modern</span><span>Clear</span></div>
+          </div>
+          <div class="panel template-preview">
+            <div><span class="eyebrow">QUICK ACCESS</span><h3>Reusable templates</h3><p>Start from a saved format instead of a blank page.</p></div>
+            <button class="secondary" onclick="showTab('templates')">View templates →</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="captions" class="tab">
+        <div class="page-heading"><span class="eyebrow">AI WRITER</span><h1>AI Captions</h1><p>Generate on-brand captions for your next post.</p></div>
+        <div class="generator-layout"><div class="panel form-panel">
+          <label>What are you posting about?</label><textarea id="captionTopic" placeholder="e.g. Launching our new eco-friendly water bottle..."></textarea>
+          <div class="two-col"><div><label>Platform</label><select id="captionPlatform"><option>Instagram</option><option>Facebook</option><option>LinkedIn</option></select></div><div><label>Tone</label><select id="captionTone"><option>Friendly</option><option>Professional</option><option>Playful</option></select></div></div>
+          <label>Call to action</label><input id="captionCTA" placeholder="e.g. Shop now / Learn more" />
+          <button class="primary full" onclick="generate('caption')">✦ Generate caption</button>
+        </div><div class="panel output-panel"><div class="output-head"><h3>Generated result</h3><button onclick="copyOutput()">Copy</button></div><div id="output" class="output empty">Your AI-generated content will appear here.</div></div></div>
+      </section>
+
+      <section id="social" class="tab">
+        <div class="page-heading"><span class="eyebrow">SOCIAL CONTENT</span><h1>Social Media Post Generator</h1><p>Create complete, ready-to-publish posts.</p></div>
+        <div class="generator-layout"><div class="panel form-panel">
+          <label>Post brief</label><textarea id="socialTopic" placeholder="Describe your product, announcement or campaign..."></textarea>
+          <div class="two-col"><div><label>Platform</label><select id="socialPlatform"><option>Instagram</option><option>Facebook</option><option>LinkedIn</option></select></div><div><label>Goal</label><select id="socialGoal"><option>Engagement</option><option>Sales</option><option>Awareness</option></select></div></div>
+          <button class="primary full" onclick="generate('social')">✦ Generate social post</button>
+        </div><div class="panel output-panel"><div class="output-head"><h3>Generated result</h3><button onclick="copyOutput()">Copy</button></div><div id="output" class="output empty">Your AI-generated content will appear here.</div></div></div>
+      </section>
+
+      <section id="ads" class="tab">
+        <div class="page-heading"><span class="eyebrow">ADVERTISING</span><h1>Ad Copy Generator</h1><p>Build concise copy around your product and offer.</p></div>
+        <div class="generator-layout"><div class="panel form-panel">
+          <label>Product / service</label><input id="adProduct" placeholder="e.g. HydroPak reusable bottle" />
+          <label>Offer / key benefit</label><textarea id="adBenefit" placeholder="What makes the offer useful or different?"></textarea>
+          <div class="two-col"><div><label>Channel</label><select><option>Meta Ads</option><option>Google Ads</option><option>LinkedIn Ads</option></select></div><div><label>Style</label><select><option>Clear & direct</option><option>Premium</option><option>Friendly</option></select></div></div>
+          <button class="primary full" onclick="generate('ad')">✦ Generate ad copy</button>
+        </div><div class="panel output-panel"><div class="output-head"><h3>Generated result</h3><button onclick="copyOutput()">Copy</button></div><div id="output" class="output empty">Your AI-generated content will appear here.</div></div></div>
+      </section>
+
+      <section id="ideas" class="tab">
+        <div class="page-heading"><span class="eyebrow">BRAINSTORM</span><h1>Content Ideas</h1><p>Never start your content calendar from zero again.</p></div>
+        <div class="generator-layout"><div class="panel form-panel">
+          <label>Brand / niche</label><input id="ideaNiche" placeholder="e.g. Pakistani skincare startup" />
+          <label>What do you want to achieve?</label><select id="ideaGoal"><option>Grow engagement</option><option>Increase sales</option><option>Build awareness</option></select>
+          <label>Number of ideas</label><select id="ideaCount"><option>5</option><option>8</option><option>10</option></select>
+          <button class="primary full" onclick="generate('ideas')">✦ Generate ideas</button>
+        </div><div class="panel output-panel"><div class="output-head"><h3>Content calendar ideas</h3><button onclick="copyOutput()">Copy</button></div><div id="output" class="output empty">Your ideas will appear here.</div></div></div>
+      </section>
+
+      <section id="templates" class="tab">
+        <div class="page-heading"><span class="eyebrow">BRAND SYSTEM</span><h1>Brand Templates</h1><p>Reusable formats help keep your communication consistent.</p></div>
+        <div class="template-grid">
+          <div class="template-card"><div class="template-top orange">PRODUCT LAUNCH</div><h3>Product Launch</h3><p>Hook → product benefit → proof → CTA.</p><button onclick="useTemplate('Product Launch')">Use template →</button></div>
+          <div class="template-card"><div class="template-top cream">PROMOTION</div><h3>Limited-Time Offer</h3><p>Offer → urgency → value → CTA.</p><button onclick="useTemplate('Limited-Time Offer')">Use template →</button></div>
+          <div class="template-card"><div class="template-top dark">EDUCATIONAL</div><h3>Educational Post</h3><p>Question → useful insight → takeaway.</p><button onclick="useTemplate('Educational Post')">Use template →</button></div>
+          <div class="template-card"><div class="template-top outline">STORY</div><h3>Brand Story</h3><p>Problem → journey → solution → message.</p><button onclick="useTemplate('Brand Story')">Use template →</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast">Copied!</div>
+  <script src="script.js"></script>
+</body>
+</html>
